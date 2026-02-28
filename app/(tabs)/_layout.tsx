@@ -1,34 +1,55 @@
-import {  Text, View } from 'react-native'
-import React from 'react'
-import { Tabs } from 'expo-router'
+import { Tabs } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { COLORS } from "@/constants/colors";
+import React from "react";
 
-const _layout = () => {
+export default function TabLayout() {
   return (
-    <Tabs>
-      <Tabs.Screen 
-        name="index"
-        options={{ 
-          title: "Home", 
-          headerShown: false 
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: COLORS.primary,
+        tabBarStyle: {
+          backgroundColor: COLORS.background,
+          borderTopColor: "#222",
+        },
+      }}
+      >
+      <Tabs.Screen
+        name="home"
+        options={{
+          title: "Home",
+          headerShown: false,
         }}
       />
-      <Tabs.Screen 
-        name="messages"
-        options={{ 
-          title: "Messages", 
-          headerShown: false 
+      <Tabs.Screen
+        name="explore"
+        options={{  
+          title: "Explore",
+          headerShown: false,
         }}
       />
-      <Tabs.Screen 
-        name="Notifications"
-        options={{ 
-          title: "Notifications", 
-          headerShown: false 
+      <Tabs.Screen
+        name="debates"
+        options={{
+          title: "Debates",
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="insights"
+        options={{
+          title: "Insights",
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          headerShown: false,
         }}
       />
     </Tabs>
-  )    
-}
-
-export default _layout
-
+  );
+};

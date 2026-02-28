@@ -3,5 +3,7 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
-  }
+  },
+  // allow terminals to load environment variables from .env files
+  "python.terminal.useEnvFile": true
 }
