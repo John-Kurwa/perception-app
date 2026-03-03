@@ -1,6 +1,5 @@
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, FlatList } from "react-native";
 import { useEffect, useState } from "react";
-import { COLORS } from "@/constants/colors";
 import DailyQuestion from "@/components/home/DailyQuestion";
 import TrendingList from "@/components/home/TrendingList";
 import InsightSnapshot from "@/components/home/InsightSnapshot";
@@ -22,28 +21,23 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <View className="flex-1 bg-background">
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <PerceptionCard item={item} />}
-        contentContainerStyle={{ padding: 16 }}
+        renderItem={({ item }) => (
+          <PerceptionCard item={item} />
+        )}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 40 }}
         ListHeaderComponent={
-          <>
+          <View className="px-4 pt-4">
             <DailyQuestion />
             <TrendingList />
-          </>
+          </View>
         }
         ListFooterComponent={<InsightSnapshot />}
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.background,
-  },
-});

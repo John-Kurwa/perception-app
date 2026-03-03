@@ -1,38 +1,27 @@
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import { COLORS } from "@/constants/colors";
+import { View, Pressable, Text } from "react-native";
 
 export default function VoteButtons() {
   return (
-    <View style={styles.row}>
-      <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.agree }]}>
-        <Text style={styles.text}>Agree</Text>
-      </TouchableOpacity>
+    <View className="flex-row justify-between">
+      
+      <Pressable className="flex-1 bg-primary py-3 rounded-xl mx-1 items-center active:opacity-80">
+        <Text className="text-black font-semibold">
+          Agree
+        </Text>
+      </Pressable>
 
-      <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.disagree }]}>
-        <Text style={styles.text}>Disagree</Text>
-      </TouchableOpacity>
+      <Pressable className="flex-1 bg-accent py-3 rounded-xl mx-1 items-center active:opacity-80">
+        <Text className="text-black font-semibold">
+          Disagree
+        </Text>
+      </Pressable>
 
-      <TouchableOpacity style={[styles.button, { backgroundColor: COLORS.neutral }]}>
-        <Text style={styles.text}>Unsure</Text>
-      </TouchableOpacity>
+      <Pressable className="flex-1 bg-gray-500 py-3 rounded-xl mx-1 items-center active:opacity-80">
+        <Text className="text-black font-semibold">
+          Unsure
+        </Text>
+      </Pressable>
+
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  button: {
-    flex: 1,
-    padding: 10,
-    borderRadius: 12,
-    marginHorizontal: 4,
-    alignItems: "center",
-  },
-  text: {
-    color: "#000",
-    fontWeight: "600",
-  },
-});
