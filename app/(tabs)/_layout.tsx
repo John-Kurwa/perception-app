@@ -7,14 +7,26 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarStyle: {
-          backgroundColor: COLORS.background,
-          borderTopColor: "#222",
+        tabBarShowLabel: true,
+        tabBarItemStyle: {  
+          height: 50,       
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingVertical: 8,
         },
-      }}
-      >
+        tabBarStyle: {
+          backgroundColor: 'COLORS.Zinc900',
+          // borderRadius: 50,
+          // marginHorizontal: 20,
+          marginBottom: 40,
+          // height: 56,
+          position: 'absolute', 
+          // overflow: 'hidden',
+          borderColor: 'COLORS.Zinc700',
+          paddingVertical: 8,
+        },
+      }}  
+    >         
       <Tabs.Screen
         name="home"
         options={{

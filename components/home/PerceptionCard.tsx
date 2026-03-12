@@ -64,9 +64,9 @@ export default function PerceptionCard({ item }: Props) {
       {/* Vote Percentage Bar */}
       <View className="mt-4">
         {(() => {
-          const total = item.agrees + item.disagrees;
+          const total = item.agree + item.disagree;
           const agreePercent =
-            total === 0 ? 50 : (item.agrees / total) * 100;
+            total === 0 ? 50 : (item.agree / total) * 100;
 
           return (
             <View className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
@@ -80,10 +80,10 @@ export default function PerceptionCard({ item }: Props) {
 
         <View className="flex-row justify-between mt-1">
           <Text className="text-primary text-xs">
-            {item.agrees} Agree
+            {item.agree} Agree
           </Text>
           <Text className="text-accent text-xs">
-            {item.disagrees} Disagree
+            {item.disagree} Disagree
           </Text>
         </View>
       </View>
