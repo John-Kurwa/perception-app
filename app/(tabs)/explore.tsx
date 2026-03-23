@@ -95,14 +95,14 @@ export default function Explore() {
       <Animated.View
         style={{
           top: insets.top,
-          height: APP_BAR_HEIGHT,
+          height: APP_BAR_HEIGHT + 20,
           transform: [{ translateY: appBarTranslateY }],
         }}
         className="absolute left-0 right-0 z-10 flex-row items-center justify-between px-4 bg-background"
       >
-        {/* <Text className="text-white text-xl font-bold">
-          Explore🔍
-        </Text> */}
+        <Text className="text-white text-center text-xl font-bold">
+          🔍
+        </Text>
       </Animated.View>
 
       {/* Scrollable Content */}
