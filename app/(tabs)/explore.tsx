@@ -62,14 +62,14 @@ export default function Explore() {
             tabBarStyle: {
               display: "flex",
               backgroundColor: "#0f0D23",
-              borderRadius: 50,
-              marginHorizontal: 20,
-              marginBottom: 40,
-              height: 56,
-              position: "absolute",
+              // borderRadius: 50,
+              // marginHorizontal: 20,
+              // marginBottom: 40,
+              // height: 56,
+              // position: "absolute",
               overflow: "hidden",
-              borderColor: "#0f0D23",
-              paddingVertical: 8,
+              // borderColor: "#0f0D23",
+              // paddingVertical: 8,
             },
           });
         }

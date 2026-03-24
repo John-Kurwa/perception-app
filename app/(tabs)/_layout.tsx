@@ -6,26 +6,61 @@ import React from "react";
 export default function TabLayout() {
   return (
     <Tabs
-      screenOptions={{
+      screenOptions={({ route }) => ({
+        headerShown: false, 
         tabBarShowLabel: true,
-        tabBarItemStyle: {  
-          height: 50,       
-          justifyContent: 'center',
-          alignItems: 'center',
-          paddingVertical: 8,
-        },
+        tabBarActiveTintColor: COLORS.primary,
+        tabBarInactiveTintColor: "#888",
+        // tabBarItemStyle: {  
+        //   height: 50,       
+        //   justifyContent: 'center',
+        //   alignItems: 'center',
+        //   paddingVertical: 8,
+        // },
         tabBarStyle: {
           backgroundColor: 'COLORS.Zinc900',
-          // borderRadius: 50,
-          // marginHorizontal: 20,
-          marginBottom: 40,
+          borderColor: 'COLORS.Zinc700',
           // height: 56,
           position: 'absolute', 
-          // overflow: 'hidden',
-          borderColor: 'COLORS.Zinc700',
-          paddingVertical: 8,
+          overflow: 'hidden',
+          // paddingVertical: 8,
         },
-      }}  
+
+        tabBarItemStyle: {
+          justifyContent: 'center',
+          alignItems: 'center',
+        },
+
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName: any;
+
+          switch (route.name) {
+            case "home":
+              iconName = focused ? "home" : "home-outline";
+              break;
+
+            case "explore":
+              iconName = focused ? "search" : "search-outline";
+              break;
+
+            case "debates":
+              iconName = focused ? "chatbubbles" : "chatbubbles-outline";
+              break;
+
+            case "insights":
+              iconName = focused ? "analytics" : "analytics-outline";
+              break;
+
+            case "profile":
+              iconName = focused ? "person" : "person-outline";
+              break;
+          }
+      
+          return (
+            <Ionicons name={iconName} size={22} color={color} />
+      );
+    },
+  })}
     >         
       <Tabs.Screen
         name="home"

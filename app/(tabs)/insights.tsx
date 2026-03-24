@@ -7,7 +7,6 @@ import TopicVolatilityIndex from "@/components/insights/TopicVolatilityIndex";
 import MostPolarizingTopic from "@/components/insights/MostPolarizingTopic";
 import AISummary from "@/components/insights/AISummary";
 import Demographics from "@/components/insights/Demographics";
-import { visibleTabBarStyle, hiddenTabBarStyle } from "@/constants/tabBarStyle";
 
 const APP_BAR_HEIGHT = 20;
 const SCROLL_THRESHOLD = 10;
@@ -35,7 +34,7 @@ export default function InsightsScreen() {
             useNativeDriver: true,
           }).start();
 
-          navigation.setOptions({ tabBarStyle: hiddenTabBarStyle });
+          navigation.setOptions({ tabBarStyle: { display: "none" } });
 
         } else if (diff < -SCROLL_THRESHOLD) {
           Animated.timing(appBarTranslateY, {
@@ -44,7 +43,12 @@ export default function InsightsScreen() {
             useNativeDriver: true,
           }).start();
 
-          navigation.setOptions({ tabBarStyle: visibleTabBarStyle });
+          navigation.setOptions({
+             tabBarStyle: {
+               display: "flex", 
+               backgroundColor: "#0f0D23" 
+              } 
+            });
         }
 
         lastScrollY.current = currentY;

@@ -6,6 +6,7 @@ import DebateDiscovery from "@/components/debates/DebateDicovery";
 import DebateArena from "@/components/debates/DebateArena";
 import ArgumentStrengthScore from "@/components/debates/ArgumentsStrengthScore.tsx";
 import Leaderboard from "@/components/debates/Learderboard";
+import { hiddenTabBarStyle } from "@/constants/tabBarStyle";
 
 const APP_BAR_HEIGHT = 20;
 const SCROLL_THRESHOLD = 10;
@@ -33,9 +34,9 @@ export default function DebatesScreen() {
             useNativeDriver: true,
           }).start();
 
-          navigation.setOptions({
-            tabBarStyle: { display: "none" },
-          });
+          navigation.setOptions({ 
+            tabBarStyle: hiddenTabBarStyle
+          });            
 
         } else if (diff < -SCROLL_THRESHOLD) {
           Animated.timing(appBarTranslateY, {
@@ -45,18 +46,10 @@ export default function DebatesScreen() {
           }).start();
 
           navigation.setOptions({
-            tabBarStyle: {
+            tabBarStyle: { 
               display: "flex",
               backgroundColor: "#0f0D23",
-              borderRadius: 50,
-              marginHorizontal: 20,
-              marginBottom: 40,
-              height: 56,
-              position: "absolute",
-              overflow: "hidden",
-              borderColor: "#0f0D23",
-              paddingVertical: 8,
-            },
+            }
           });
         }
 

@@ -60,12 +60,12 @@ export default function HomeScreen() {
               backgroundColor: "#0f0D23",
               // borderRadius: 50,
               // marginHorizontal: 20,
-              marginBottom: 40,
-              height: 56,
-              position: "absolute",
-              overflow: "hidden",
-              borderColor: "#0f0D23",
-              paddingVertical: 8,
+              // marginBottom: 40,
+              // height: 56,
+              // position: "absolute",
+              // overflow: "hidden",
+              // borderColor: "#0f0D23",
+              // paddingVertical: 8,
             },
           });
         }
