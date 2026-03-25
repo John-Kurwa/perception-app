@@ -3,14 +3,41 @@ import { useState } from "react";
 import { timeAgo } from "@/utils/timeAgo";
 import { Perception } from "@/services/mockFeed";
 import { AntDesign, Feather } from "@expo/vector-icons";
-
+import { useRouter } from "expo-router"
 interface Props {
-  item: Perception;
+  item: Perception & {
+    hasEngaged?: boolean;
+  };
 }
 
 export default function PerceptionCard({ item }: Props) {
+  const router = useRouter(); 
+
+  const [hasEngaged, setHasEngaged] = useState(item.hasEngaged ?? false);
   const [expanded, setExpanded] = useState(false);
   const [agreed, setAgreed] = useState<boolean | null>(null);
+
+  const handleEngagement = async (type: "agree" | "disagree") => {
+  try {
+    setAgreed(type === "agree");
+    setHasEngaged(true);
+
+    await fetch("YOUR_API_URL/engagement", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        perception_id: item.id,
+        type,
+      }),
+    });
+
+    // OPTIONAL: Auto navigate after engagement (uncomment if you want)
+    // navigation.navigate("Explore", { perceptionId: item.id });
+
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   return (
     <View className="bg-surface rounded-2xl p-4 mb-4 shadow-md">
@@ -88,12 +115,42 @@ export default function PerceptionCard({ item }: Props) {
         </View>
       </View>
 
+       {!hasEngaged && (
+        <Pressable
+          className="mt-4 bg-white/5 border border-gray-700 rounded-2xl p-4"
+        >
+          <Text className="text-center text-gray-400">
+            🔒 Engage to unlock community insights
+          </Text>
+
+          <Text className="text-center text-primary mt-1 font-semibold">
+            Agree or Disagree to continue
+          </Text>
+        </Pressable>
+      )}
+
+      {hasEngaged && (
+        <Pressable
+          onPress={() =>
+            router.push({
+              pathname: "/explore",
+              params: { perceptionId: item.id },
+            })
+          }
+          className="mt-4 bg-primary rounded-2xl p-4"
+        >
+          <Text className="text-center text-black font-semibold">
+            View Discussion →
+          </Text>
+        </Pressable>
+      )}
+
       {/* Engagement Bar */}
       <View className="flex-row justify-between items-center mt-4 border-t border-gray-700 pt-3">
 
         {/* Agree */}
         <Pressable
-          onPress={() => setAgreed(true)}
+          onPress={() => handleEngagement("agree")}
           className="flex-row items-center"
         >
           <AntDesign
@@ -108,7 +165,7 @@ export default function PerceptionCard({ item }: Props) {
 
         {/* Disagree */}
         <Pressable
-          onPress={() => setAgreed(false)}
+          onPress={() => handleEngagement("disagree")}
           className="flex-row items-center"
         >
           <AntDesign
@@ -123,7 +180,7 @@ export default function PerceptionCard({ item }: Props) {
 
         {/* Comment */}
         <Pressable className="flex-row items-center">
-          <Feather author="message-circle" size={18} color="gray" />
+          <Feather name="message-circle" size={18} color="gray" />
           <Text className="text-gray-400 ml-1 text-sm">
             Comment
           </Text>
@@ -137,6 +194,6 @@ export default function PerceptionCard({ item }: Props) {
           </Text>
         </Pressable>
       </View>
-    </View>
+    </View>    
   );
 }

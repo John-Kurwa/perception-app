@@ -8,11 +8,16 @@ import SearchResults from "@/components/explore/SearchResults";
 import SuggestedTopics from "@/components/explore/SuggestedTopics";
 import RecentSearches from "@/components/explore/RecentSearches";
 import { usePerceptions } from "@/hooks/usePerceptions";
+import { useLocalSearchParams } from "expo-router";
 
 const APP_BAR_HEIGHT = 20;
 const SCROLL_THRESHOLD = 10;
 
 export default function Explore() {
+  const { perceptionId } = useLocalSearchParams();
+
+  console.log(perceptionId)
+
   const [query, setQuery] = useState("");
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
