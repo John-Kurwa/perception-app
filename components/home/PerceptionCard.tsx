@@ -29,7 +29,7 @@ export default function PerceptionCard({ item }: Props) {
             {item.category} • {timeAgo(item.createdAt)}
           </Text>
         </View>
-        <Feather author="more-horizontal" size={20} color="gray" />
+        <Feather name="more-horizontal" size={20} color="gray" />
       </View>
 
       {/* Hook / Title */}
