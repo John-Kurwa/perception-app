@@ -17,9 +17,9 @@ export default function PerceptionCard({ item }: Props) {
   const [expanded, setExpanded] = useState(false);
   const [agreed, setAgreed] = useState<boolean | null>(null);
 
-  const handleEngagement = async (type: "agree" | "disagree") => {
+  const handleEngagement = async (type: "comments" ) => {
   try {
-    setAgreed(type === "agree");
+    setAgreed(type === "comments");
     setHasEngaged(true);
 
     await fetch("YOUR_API_URL/engagement", {
@@ -107,11 +107,11 @@ export default function PerceptionCard({ item }: Props) {
 
         <View className="flex-row justify-between mt-1">
           <Text className="text-primary text-xs">
-            {item.agree} Agree
+            {item.comments} Comments
           </Text>
-          <Text className="text-accent text-xs">
+          {/* <Text className="text-accent text-xs">
             {item.disagree} Disagree
-          </Text>
+          </Text> */}
         </View>
       </View>
 
@@ -124,7 +124,7 @@ export default function PerceptionCard({ item }: Props) {
           </Text>
 
           <Text className="text-center text-primary mt-1 font-semibold">
-            Agree or Disagree to continue
+            Comment to see other perspectives
           </Text>
         </Pressable>
       )}
@@ -150,7 +150,7 @@ export default function PerceptionCard({ item }: Props) {
 
         {/* Agree */}
         <Pressable
-          onPress={() => handleEngagement("agree")}
+          onPress={() => handleEngagement("comments")}
           className="flex-row items-center"
         >
           <AntDesign
@@ -165,7 +165,7 @@ export default function PerceptionCard({ item }: Props) {
 
         {/* Disagree */}
         <Pressable
-          onPress={() => handleEngagement("disagree")}
+          onPress={() => handleEngagement("comments")}
           className="flex-row items-center"
         >
           <AntDesign
@@ -188,7 +188,7 @@ export default function PerceptionCard({ item }: Props) {
 
         {/* Share */}
         <Pressable className="flex-row items-center">
-          <Feather author="share-2" size={18} color="gray" />
+          <Feather name="share-2" size={18} color="gray" />
           <Text className="text-gray-400 ml-1 text-sm">
             Share
           </Text>
