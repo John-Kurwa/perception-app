@@ -20,7 +20,7 @@ export default function PerceptionCard({ item }: Props) {
   const handleEngagement = async (type: "comments" ) => {
   try {
     setAgreed(type === "comments");
-    setHasEngaged(true);
+    setHasEngaged(false);
 
     await fetch("YOUR_API_URL/engagement", {
       method: "POST",
